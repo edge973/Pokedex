@@ -31,7 +31,7 @@ export default class App extends React.Component{
 
     filterSearch(search)
     {
-        let regex = new RegExp (search,'gi');
+        let regex = new RegExp (search.trim(),'gi');
             this.setState({
                 filter: this.state.pokemons.filter(pokemon => {
                     return pokemon.name.match(regex) || pokemon.type.find(type => {
@@ -58,12 +58,14 @@ export default class App extends React.Component{
         this.setState({
             search: this.input__.value
         });
-        this.filterSearch(this.input__.value);
-        this.showSearch();
+       this.input__.addEventListener('keyup',()=>{
+           this.filterSearch(this.input__.value);
+           this.showSearch();
+       })
     };
 
     render() {
-        console.log(this.state.filter);
+        console.log('filter:',this.state.filter);
         return (
             <div id="App" className="ui center aligned container">
                 <h1 className='title-h1'>POKEDEX !</h1>
