@@ -2,36 +2,92 @@ body
 {
     background-color: azure;
 }
-.title-h1
+@media screen and (min-width: 560px)
 {
-    color: yellow;
-    text-shadow: #6495ED 2px 2px, #6495ED -2px 2px, #6495ED -2px -2px, #6495ED 2px -2px;
-    font-size: 70px;
-}
-.input-research
-{
-    font-size: 20px;
-    width: 500px;
-    padding: 10px;
-    background-color: white;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-    border: none;
-    border-bottom: #6495ED 4px solid ;
-}
-.input-research::placeholder
-{
-    font-size: 20px;
-}
-ul
-{
-    display: block;
+    .title-h1
+    {
+        color: yellow;
+        text-shadow: #6495ED 2px 2px, #6495ED -2px 2px, #6495ED -2px -2px, #6495ED 2px -2px;
+        font-size: 70px;
+    }
+    .input-research
+    {
+        font-size: 20px;
+        width: 500px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        border: none;
+        border-bottom: #6495ED 4px solid ;
+    }
+    .input-research::placeholder
+    {
+        font-size: 20px;
+    }
+    ul
+    {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    li
+    {
+        display: flex;
+        justify-content: space-between;
+        width: 500px;
+        list-style: none;
+        padding: 22px;
+        background-color: white;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
 
 }
-li
+@media not screen and (min-width: 560px)
 {
-    width: 500px;
-    list-style: none;
-    padding: 22px;
-    background-color: white;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    .title-h1
+    {
+        color: yellow;
+        text-shadow: #6495ED 2px 2px, #6495ED -2px 2px, #6495ED -2px -2px, #6495ED 2px -2px;
+        font-size: 60px;
+    }
+    .input-research
+    {
+        font-size: 20px;
+        width: 300px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        border: none;
+        border-bottom: #6495ED 4px solid ;
+    }
+    .input-research::placeholder
+    {
+        font-size: 20px;
+    }
+    .input-research:focus {
+        outline: none;
+    }
+    ul
+    {
+        display: flex;
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    li
+    {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+        list-style: none;
+        margin: 0;
+        padding: 15px;
+        background-color: white;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
 }

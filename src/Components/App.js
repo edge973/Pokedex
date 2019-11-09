@@ -8,18 +8,62 @@ export default class App extends React.Component{
     {
         super(props);
         this.state=({
-            search : ''
+            search   : '',
+            pokemons : [],
+            filter   : []
         });
     }
 
-    onChange = ()=>
+    componentDidMount() {
+        this.dataJson();
+    }
+
+    dataJson() {
+        let url = 'https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json';
+
+        fetch(url)
+            .then(blob => blob.json())
+            .then(data => {
+                        this.setState({pokemons : data.pokemon});
+                }
+            );
+    }
+
+    filterSearch(search)
     {
+        let regex = new RegExp (search,'gi');
+            this.setState({
+                filter: this.state.pokemons.filter(pokemon => {
+                    return pokemon.name.match(regex) || pokemon.type.find(type => {
+                        return type.match(regex)
+                    });
+                })
+            });
+    }
+
+    showSearch()
+    {
+        let ul = document.querySelector('#ul');
+        let html = this.state.filter.map(pokemon => {
+            return ` <li>
+                        <img src="${pokemon.img}" alt="${pokemon.name}" width="42" height="42">
+                        <span>${pokemon.name}</span>
+                        <span>${pokemon.height}</span>
+                     </li>`}).join('');
+        ul.innerHTML = html;
+
+    }
+
+    onChange = ()=> {
         this.setState({
-            search : this.input__
-        })
+            search: this.input__.value
+        });
+        this.filterSearch(this.input__.value);
+        this.showSearch();
     };
 
     render() {
+        console.log(this.state.filter);
         return (
             <div id="App" className="ui center aligned container">
                 <h1 className='title-h1'>POKEDEX !</h1>
